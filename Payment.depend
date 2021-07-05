@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1625471023 source:d:\sprints\sprint 2\payment\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Data_Types.h"
+	"ATM.h"
+	"TestCases.h"
+
+1625423902 d:\sprints\sprint 2\payment\data_types.h
+
+1625470812 source:d:\sprints\sprint 2\payment\atm.c
+	"ATM.h"
+
+1625470812 d:\sprints\sprint 2\payment\atm.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Data_Types.h"
+
+1625470708 source:d:\sprints\sprint 2\payment\testcases.c
+	"TestCases.h"
+
+1625470708 d:\sprints\sprint 2\payment\testcases.h
+	<stdio.h>
+	<stdlib.h>
+	"Data_Types.h"
+	"ATM.h"
+
