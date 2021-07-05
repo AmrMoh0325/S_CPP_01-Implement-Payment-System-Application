@@ -36,8 +36,6 @@ void testCase1(void)
     {
        printf("\nThe Transaction is Declined\n\n");
     }
-    free(card);
-    free(terminal);
 }
 
 void testCase2(void)
@@ -46,7 +44,7 @@ void testCase2(void)
     ST_terminalData_t *terminal = (ST_terminalData_t *) malloc(sizeof(ST_terminalData_t));
 
     strncpy(card->cardHolderName,"Yehia Mohammed",25);
-    strncpy(card->primaryAccountNumber,"456789123",20);
+    strncpy(card->primaryAccountNumber,"123456789",20);
     strncpy(card->cardExpirationDate,"10/19",6);
 
     terminal->MaxTransAmount=MAX_TRANSACTION;
@@ -72,11 +70,11 @@ void testCase3(void)
     ST_terminalData_t *terminal = (ST_terminalData_t *) malloc(sizeof(ST_terminalData_t));
 
     strncpy(card->cardHolderName,"Yehia Mohammed",25);
-    strncpy(card->primaryAccountNumber,"456789123",20);
+    strncpy(card->primaryAccountNumber,"654823719",20);
     strncpy(card->cardExpirationDate,"12/19",6);
 
     terminal->MaxTransAmount=MAX_TRANSACTION;
-    terminal->transAmount=2000;
+    terminal->transAmount=2500;
     strncpy(terminal->transactionDate,"27/11/2019",11);
 
     printf("\nCard Data:\nName: %s\nPAN: %s\nDate: %s\n\n",card->cardHolderName,card->primaryAccountNumber,card->cardExpirationDate);
@@ -124,7 +122,7 @@ void testCase5(void)
     ST_terminalData_t *terminal = (ST_terminalData_t *) malloc(sizeof(ST_terminalData_t));
 
     strncpy(card->cardHolderName,"Yehia Mohammed",25);
-    strncpy(card->primaryAccountNumber,"456789124",20);
+    strncpy(card->primaryAccountNumber,"793148625",20);
     strncpy(card->cardExpirationDate,"12/19",6);
 
     terminal->MaxTransAmount=MAX_TRANSACTION;

@@ -28,6 +28,11 @@ typedef struct{
     uint8_t primaryAccountNumber[20];
 }ST_accountBalance_t;
 
+typedef enum{
+    DECLINED,
+    APPROVED
+} EN_transStat_t;
+
 //gets credit card related data
 ST_cardData_t *get_card_data(void);
 
@@ -35,13 +40,38 @@ ST_cardData_t *get_card_data(void);
 ST_cardData_t *get_terminal_data(void);
 
 //performs terminal related checks
-uint8_t Terminal_check(ST_cardData_t *card, ST_terminalData_t *terminal);
+EN_transStat_t Terminal_check(ST_cardData_t *card, ST_terminalData_t *terminal);
 
 //performs server related checks
-uint8_t Server_check(ST_cardData_t *card, ST_terminalData_t *terminal);
+EN_transStat_t Server_check(ST_cardData_t *card, ST_terminalData_t *terminal);
 
 //performs all checks on the trasnsaction
-uint8_t check_transaction(ST_cardData_t *card,ST_terminalData_t *terminal);
+EN_transStat_t check_transaction(ST_cardData_t *card,ST_terminalData_t *terminal);
+
+
+/************************************ Bonus *****************************************/
+
+//max number of transactions that can be logged
+#define TRANSACTION_NUMBER_LIMIT        5
+
+
+typedef struct{
+    ST_cardData_t card;
+    float transAmount;
+    uint8_t transactionDate[11];
+    EN_transStat_t status;
+}ST_transactionData_t;
+
+//logs the transaction with the provided card and terminal info to the database array
+uint8_t log_transaction(ST_cardData_t *card, ST_terminalData_t *terminal,EN_transStat_t status);
+
+//sorts the transaction database array based on PAN numbers
+void sort_Transaction_List(ST_transactionData_t *transaction_database);
+
+//prints the transaction database array
+void print_Transaction_List(void);
+
+/************************************************************************************/
 
 
 /************************************************************************************/
