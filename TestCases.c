@@ -1,8 +1,17 @@
+/*****************************************************************************
+* Task: Payment system
+* File Name: TestCases.c
+* Description: File for Testing
+* Author: Amr Mohamed
+* Date: 5/7/2021
+******************************************************************************/
+
 #include "TestCases.h"
 
 
 void Test_Enter_Data(void)
 {
+
     printf("Enter Card Data:\n");
     ST_cardData_t *card=get_card_data();
     printf("\nEnter Terminal Data:\n");
@@ -14,6 +23,7 @@ void Test_Enter_Data(void)
 
 void testCase1(void)
 {
+    printf("Test Case 1:\n");
     ST_cardData_t *card = (ST_cardData_t *)malloc(sizeof(ST_cardData_t));
     ST_terminalData_t *terminal = (ST_terminalData_t *) malloc(sizeof(ST_terminalData_t));
 
@@ -27,8 +37,9 @@ void testCase1(void)
 
     printf("\nCard Data:\nName: %s\nPAN: %s\nDate: %s\n\n",card->cardHolderName,card->primaryAccountNumber,card->cardExpirationDate);
     printf("Terminal Data:\nAmount: %f\nMax Amount: %f\nDate: %s\n\n",terminal->transAmount,terminal->MaxTransAmount,terminal->transactionDate);
-
-    if(check_transaction(card,terminal))
+    EN_transStat_t Expected_Result=APPROVED;
+    EN_transStat_t status=check_transaction(card,terminal);
+    if(status)
     {
        printf("\nThe Transaction is Approved\n\n");
     }
@@ -36,10 +47,21 @@ void testCase1(void)
     {
        printf("\nThe Transaction is Declined\n\n");
     }
+
+
+    if (status == Expected_Result)
+    {
+        printf("Test case PASSED\n\n");
+    }
+    else
+    {
+        printf("Test case FAILED\n\n");
+    }
 }
 
 void testCase2(void)
 {
+    printf("Test Case 2:\n");
     ST_cardData_t *card = (ST_cardData_t *)malloc(sizeof(ST_cardData_t));
     ST_terminalData_t *terminal = (ST_terminalData_t *) malloc(sizeof(ST_terminalData_t));
 
@@ -53,8 +75,9 @@ void testCase2(void)
 
     printf("\nCard Data:\nName: %s\nPAN: %s\nDate: %s\n\n",card->cardHolderName,card->primaryAccountNumber,card->cardExpirationDate);
     printf("Terminal Data:\nAmount: %f\nMax Amount: %f\nDate: %s\n\n",terminal->transAmount,terminal->MaxTransAmount,terminal->transactionDate);
-
-    if(check_transaction(card,terminal))
+    EN_transStat_t Expected_Result=DECLINED;
+    EN_transStat_t status=check_transaction(card,terminal);
+    if(status)
     {
        printf("\nThe Transaction is Approved\n\n");
     }
@@ -62,10 +85,21 @@ void testCase2(void)
     {
        printf("\nThe Transaction is Declined\n\n");
     }
+
+
+    if (status == Expected_Result)
+    {
+        printf("Test case PASSED\n\n");
+    }
+    else
+    {
+        printf("Test case FAILED\n\n");
+    }
 }
 
 void testCase3(void)
 {
+    printf("Test Case 3:\n");
     ST_cardData_t *card = (ST_cardData_t *)malloc(sizeof(ST_cardData_t));
     ST_terminalData_t *terminal = (ST_terminalData_t *) malloc(sizeof(ST_terminalData_t));
 
@@ -80,18 +114,31 @@ void testCase3(void)
     printf("\nCard Data:\nName: %s\nPAN: %s\nDate: %s\n\n",card->cardHolderName,card->primaryAccountNumber,card->cardExpirationDate);
     printf("Terminal Data:\nAmount: %f\nMax Amount: %f\nDate: %s\n\n",terminal->transAmount,terminal->MaxTransAmount,terminal->transactionDate);
 
-    if(check_transaction(card,terminal))
+    EN_transStat_t Expected_Result=DECLINED;
+    EN_transStat_t status=check_transaction(card,terminal);
+    if(status)
     {
-       printf("\nThe Transaction is Approved\n\n");
+        printf("\nThe Transaction is Approved\n\n");
     }
     else
     {
-       printf("\nThe Transaction is Declined\n\n");
+        printf("\nThe Transaction is Declined\n\n");
+    }
+
+
+    if (status == Expected_Result)
+    {
+        printf("Test case PASSED\n\n");
+    }
+    else
+    {
+        printf("Test case FAILED\n\n");
     }
 }
 
 void testCase4(void)
 {
+    printf("Test Case 4:\n");
     ST_cardData_t *card = (ST_cardData_t *)malloc(sizeof(ST_cardData_t));
     ST_terminalData_t *terminal = (ST_terminalData_t *) malloc(sizeof(ST_terminalData_t));
 
@@ -106,18 +153,31 @@ void testCase4(void)
     printf("\nCard Data:\nName: %s\nPAN: %s\nDate: %s\n\n",card->cardHolderName,card->primaryAccountNumber,card->cardExpirationDate);
     printf("Terminal Data:\nAmount: %f\nMax Amount: %f\nDate: %s\n\n",terminal->transAmount,terminal->MaxTransAmount,terminal->transactionDate);
 
-    if(check_transaction(card,terminal))
+    EN_transStat_t Expected_Result=DECLINED;
+    EN_transStat_t status=check_transaction(card,terminal);
+    if(status)
     {
-       printf("\nThe Transaction is Approved\n\n");
+        printf("\nThe Transaction is Approved\n\n");
     }
     else
     {
-       printf("\nThe Transaction is Declined\n\n");
+        printf("\nThe Transaction is Declined\n\n");
+    }
+
+
+    if (status == Expected_Result)
+    {
+        printf("Test case PASSED\n\n");
+    }
+    else
+    {
+        printf("Test case FAILED\n\n");
     }
 }
 
 void testCase5(void)
 {
+    printf("Test Case 5:\n");
     ST_cardData_t *card = (ST_cardData_t *)malloc(sizeof(ST_cardData_t));
     ST_terminalData_t *terminal = (ST_terminalData_t *) malloc(sizeof(ST_terminalData_t));
 
@@ -132,12 +192,24 @@ void testCase5(void)
     printf("\nCard Data:\nName: %s\nPAN: %s\nDate: %s\n\n",card->cardHolderName,card->primaryAccountNumber,card->cardExpirationDate);
     printf("Terminal Data:\nAmount: %f\nMax Amount: %f\nDate: %s\n\n",terminal->transAmount,terminal->MaxTransAmount,terminal->transactionDate);
 
-    if(check_transaction(card,terminal))
+    EN_transStat_t Expected_Result=DECLINED;
+    EN_transStat_t status=check_transaction(card,terminal);
+    if(status)
     {
-       printf("\nThe Transaction is Approved\n\n");
+        printf("\nThe Transaction is Approved\n\n");
     }
     else
     {
-       printf("\nThe Transaction is Declined\n\n");
+        printf("\nThe Transaction is Declined\n\n");
+    }
+
+
+    if (status == Expected_Result)
+    {
+        printf("Test case PASSED\n\n");
+    }
+    else
+    {
+        printf("Test case FAILED\n\n");
     }
 }

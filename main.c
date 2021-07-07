@@ -5,7 +5,10 @@
 #include "ATM.h"
 #include "TestCases.h"
 
+#define TEST
 
+
+#ifdef  APP
 //Normal app
 int main()
 {
@@ -40,7 +43,7 @@ int main()
         {
             fflush(stdin);
             scanf("%c",&input);
-            if (input>='A' || input<= 'Z')  input=input-'A'+'a';
+            if (input>='A' && input<= 'Z')  input=input-'A'+'a';
         }
 
         if (input=='n')
@@ -54,10 +57,12 @@ int main()
 
     return 0;
 }
+#endif // APP
 
 
+#ifdef TEST
 //App for testing
-/*int main(void)
+int main(void)
 {
     testCase1();
     printf("\n===========================================================\n");
@@ -71,8 +76,9 @@ int main()
     printf("\n===========================================================\n");
     print_Transaction_List();
 
-}*/
+}
 
+#endif // TEST
 
 
 

@@ -1,3 +1,12 @@
+/*****************************************************************************
+* Task: Payment System
+* File Name: ATM.h
+* Description: header file for the ATM.c
+* Author: Amr Mohamed
+* Date: 5/7/2021
+******************************************************************************/
+
+
 #ifndef ATM_H_
 #define ATM_H_
 
@@ -33,19 +42,49 @@ typedef enum{
     APPROVED
 } EN_transStat_t;
 
-//gets credit card related data
+
+/************************************************************************************
+* Parameters (in): void
+* Parameters (out): ST_cardData_t *
+* Return value: a pointer to strcuture containing card data
+* Description: gets card data from the user and stores them in a structure
+************************************************************************************/
 ST_cardData_t *get_card_data(void);
 
-//gets terminal related data
-ST_cardData_t *get_terminal_data(void);
 
-//performs terminal related checks
+/************************************************************************************
+* Parameters (in): void
+* Parameters (out): ST_terminalData_t *
+* Return value: a pointer to strcuture containing terminal data
+* Description: gets terminal data from the user and stores them in a structure
+************************************************************************************/
+ST_terminalData_t *get_terminal_data(void);
+
+
+/************************************************************************************
+* Parameters (in): ST_cardData_t *card, ST_terminalData_t *terminal
+* Parameters (out): EN_transStat_t
+* Return value: Approved or Declined
+* Description: performs terminal checks on the provided card and terminal data
+************************************************************************************/
 EN_transStat_t Terminal_check(ST_cardData_t *card, ST_terminalData_t *terminal);
 
-//performs server related checks
+
+/************************************************************************************
+* Parameters (in): ST_cardData_t *card, ST_terminalData_t *terminal
+* Parameters (out): EN_transStat_t
+* Return value: Approved or Declined
+* Description: performs server checks on the provided card and terminal data
+************************************************************************************/
 EN_transStat_t Server_check(ST_cardData_t *card, ST_terminalData_t *terminal);
 
-//performs all checks on the trasnsaction
+
+/************************************************************************************
+* Parameters (in): ST_cardData_t *card, ST_terminalData_t *terminal
+* Parameters (out): EN_transStat_t
+* Return value: Approved or Declined
+* Description: performs all checks on the trasnsaction
+************************************************************************************/
 EN_transStat_t check_transaction(ST_cardData_t *card,ST_terminalData_t *terminal);
 
 
@@ -62,20 +101,43 @@ typedef struct{
     EN_transStat_t status;
 }ST_transactionData_t;
 
-//logs the transaction with the provided card and terminal info to the database array
+
+
+/************************************************************************************
+* Parameters (in): ST_cardData_t *card, ST_terminalData_t *terminal ,EN_transStat_t status
+* Parameters (out): uint8_t
+* Return value: 0 if logging failed  -  1 if logging successful
+* Description: logs the transaction with the provided card and terminal info to the database array
+************************************************************************************/
 uint8_t log_transaction(ST_cardData_t *card, ST_terminalData_t *terminal,EN_transStat_t status);
 
-//sorts the transaction database array based on PAN numbers
+
+/************************************************************************************
+* Parameters (in): ST_transactionData_t *transaction_database
+* Parameters (out): void
+* Return value: void
+* Description: sorts the transaction database array based on PAN numbers
+************************************************************************************/
 void sort_Transaction_List(ST_transactionData_t *transaction_database);
 
-//prints the transaction database array
+
+/************************************************************************************
+* Parameters (in): void
+* Parameters (out): void
+* Return value: void
+* Description: prints the transaction database array
+************************************************************************************/
 void print_Transaction_List(void);
 
 /************************************************************************************/
 
 
-/************************************************************************************/
-//scans a string from the user
+/************************************************************************************
+* Parameters (in): uint8_t *buffer,uint32_t max_size
+* Parameters (out): void
+* Return value: void
+* Description: scans a string from the user and terminates it with null
+************************************************************************************/
 void scan_string(uint8_t *buffer,uint32_t max_size);
 
 
